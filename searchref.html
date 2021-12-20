@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+    <meta charset="UTF-8">
+    <a href="/">Back to mainpage</a>
+    <h1>Location West</h1>
+    <p>Search results below</p>
+
+
+    <style>
+
+ #myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+ #myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+ #myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+ #myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+ #myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+    </style>
+
+
+    <table id="myTable">
+       <tr class="header">
+           <th>Reference</th>
+           <th>object</th>
+           <th>Product</th>
+           <th>Type</th>
+           <th>job available</th>
+           <th>Commenced job</th>
+           <th>Job at location</th>
+           <th>Job Reported</th>
+           <th>Employee number</th>
+
+       </tr>
+    {% for item in items %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5].strftime("%d-%m-%y %H:%M")}}</td>
+            <td>{{item[7].strftime("%d-%m-%y %H:%M")}}</td>
+            <td>{{item[10].strftime("%d-%m-%y %H:%M")}}</td>
+            {% if item[12] is not none %}
+            <td>{{item[12].strftime("%d-%m-%y %H:%M")}}</td>
+            {% elif item[12] is none %}
+            <td>{{item[12]}}</td>
+            {% endif %}
+          </tr>
+            {% endfor %}
+    </table>
+
+    </body>
+</html>
