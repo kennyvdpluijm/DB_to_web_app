@@ -38,5 +38,5 @@ connection_string = (
 
 connection_uri = F"mssql+pyodbc:///?odbc_connect={urllib.parse.quote_plus(connection_string)}"
 engine = create_engine(connection_uri)
-join.to_sql("tankView", engine, if_exists="replace", index=False)
+join.to_sql("DB_name", engine, if_exists="replace", index=False)
 print("All files updated")
