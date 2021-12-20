@@ -60,7 +60,7 @@ def location_west():
     return render_template("locationnord.html", items=results.all())
 
 
-@app.route("/searchreference", methods=["GET", "POST"])
+@app.route("/searchref", methods=["GET", "POST"])
 def search_reference():
     if request.method == "POST":
         form = request.form
@@ -85,7 +85,7 @@ def search_reference():
         return redirect('/')
 
 
-@app.route("/object", methods=["GET", "POST"])
+@app.route("/searchobject", methods=["GET", "POST"])
 def search_object():
     if request.method == "POST":
         form = request.form
@@ -105,12 +105,12 @@ def search_object():
         DBSession = sessionmaker(bind=engine)
         session = DBSession()
         results = session.query(table1).filter(table1.c.Object.like(search_input)).order_by(table1.c.Completed_job.desc())
-        return render_template("object.html", items=results, pageTitle="Search object", legend="Search results")
+        return render_template("searchobject.html", items=results, pageTitle="Search object", legend="Search results")
     else:
         return redirect('/')
 
 
-@app.route("/product", methods=["GET", "POST"])
+@app.route("/searchproduct", methods=["GET", "POST"])
 def search_product():
     if request.method == "POST":
         form = request.form
@@ -130,12 +130,12 @@ def search_product():
         DBSession = sessionmaker(bind=engine)
         session = DBSession()
         results = session.query(table1).filter(table1.c.Product.like(search_input)).order_by(table1.c.Completed_job.desc())
-        return render_template("product.html", items=results, pageTitle="Search product", legend="Search results")
+        return render_template("searchproduct.html", items=results, pageTitle="Search product", legend="Search results")
     else:
         return redirect('/')
 
 
-@app.route("/date", methods=["GET", "POST"])
+@app.route("/searchdate", methods=["GET", "POST"])
 def search_date():
     if request.method == "POST":
         form = request.form
@@ -155,7 +155,7 @@ def search_date():
         DBSession = sessionmaker(bind=engine)
         session = DBSession()
         results = session.query(table1).filter(table1.c.Commenced_job.like(search_input)).order_by(table1.c.Completed_job.desc())
-        return render_template("date.html", items=results, pageTitle="Search date", legend="Search results")
+        return render_template("searchdate.html", items=results, pageTitle="Search date", legend="Search results")
     else:
         return redirect('/')
 
