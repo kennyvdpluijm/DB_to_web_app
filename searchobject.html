@@ -60,15 +60,28 @@
             <td>{{item[0]}}</td>
             <td>{{item[1]}}</td>
             <td>{{item[2]}}</td>
-            <td>{{item[4]}}</td>
+            <td>job</td>
+            {% if item[5] is not none %}
             <td>{{item[5].strftime("%d-%m-%y %H:%M")}}</td>
+            {% elif item[5] is none %}
+            <td>{{item[5]}}</td>
+            {% endif %}
+            {% if item[7] is not none %}
             <td>{{item[7].strftime("%d-%m-%y %H:%M")}}</td>
+            {% elif item[7] is none %}
+            <td>{{item[7]}}</td>
+            {% endif %}
+            {% if item[10] is not none %}
             <td>{{item[10].strftime("%d-%m-%y %H:%M")}}</td>
+            {% elif item[10] is none %}
+            <td>{{item[10]}}</td>
+            {% endif %}
             {% if item[12] is not none %}
             <td>{{item[12].strftime("%d-%m-%y %H:%M")}}</td>
             {% elif item[12] is none %}
             <td>{{item[12]}}</td>
             {% endif %}
+            <td>{{item[11]}}</td>
           </tr>
             {% endfor %}
     </table>
